@@ -1,0 +1,17 @@
+# Folder Kompilasi & Build
+out/
+target/
+bin/
+*.class
+
+# IDE / Editor Files
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+
+# OS Files
+.DS_Store
+Thumbs.db
