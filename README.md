@@ -74,3 +74,19 @@ src/soal1/Laptop.java:39: error: harga has private access in Perangkat
 2 errors
 ```
 - **Penjelasan**: Error kompilasi tersebut terjadi karena atribut berakses private diisolasikan secara ketat dan hanya dapat diakses langsung dari dalam kelas tempat ia dideklarasikan (Perangkat). Subclass seperti Laptop tidak memiliki hak akses langsung ke atribut private milik superclass-nya. Agar subclass dapat membaca/mengakses variabel atribut secara langsung tanpa harus lewat getter, penentu akses (access modifier) harus diubah menjadi protected.
+
+### Jawaban Soal 2
+
+**Output Program Bagian A:**
+   ```text
+   Hewan dibuat: Tom
+   Kucing dibuat
+   Tom makan
+   meong
+   meong
+   Tom memanjat
+   Hewan dibuat: Generik
+   h2 bukan merupakan instance dari Kucing (Downcasting terhindar).
+   ```
+   - **Penjelasan**:
+   Pada Bagian A, pemanggilan h.panjat() menghasilkan compile-time error karena tipe statis variabel h adalah Hewan yang tidak memiliki method panjat(), sementara downcasting langsung seperti (Kucing) h2 pada objek superclass murni dapat menyebabkan ClassCastException sehingga harus dicegah menggunakan pengecekan if (h2 instanceof Kucing). Panggilan h.makan() tetap mengeksekusi suara() milik Kucing akibat dynamic binding berdasar tipe dinamis objeknya. Selanjutnya pada Bagian B, init B mencetak nilai 0 karena method init() yang di-override oleh kelas B dipanggil saat konstruktor superclass A berjalan sebelum inisialisasi atribut nilai = 5 di kelas B selesai. Terakhir pada Bagian C, l3.luas() menghasilkan 0.0 karena tipe dinamisnya adalah Titik, yang mana secara desain OOP relasi "Titik adalah sebuah Lingkaran" ini kurang tepat dan melanggar Liskov Substitution Principle sebab titik tidak memiliki dimensi area maupun keliling.
