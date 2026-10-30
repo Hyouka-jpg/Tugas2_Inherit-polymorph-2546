@@ -73,3 +73,4 @@ src/soal1/Laptop.java:39: error: harga has private access in Perangkat
                         ^
 2 errors
 ```
+- **Penjelasan**: Error kompilasi tersebut terjadi karena atribut berakses private diisolasikan secara ketat dan hanya dapat diakses langsung dari dalam kelas tempat ia dideklarasikan (Perangkat). Subclass seperti Laptop tidak memiliki hak akses langsung ke atribut private milik superclass-nya. Agar subclass dapat membaca/mengakses variabel atribut secara langsung tanpa harus lewat getter, penentu akses (access modifier) harus diubah menjadi protected.
