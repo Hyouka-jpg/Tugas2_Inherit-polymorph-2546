@@ -60,6 +60,29 @@ Tugas2_Inherit-polymorph-2546/
 ├── ⚙️ .gitignore
 └── 📝 README.md
 ```
+## Cara Menjalankan Program
+
+### 1. Melalui Command Line (Terminal)
+
+1. Clone repository ini ke komputer kamu:
+   ```bash
+   git clone [https://github.com/Hyouka-jpg/Tugas2_Inherit-polymorph-2546.git](https://github.com/Hyouka-jpg/Tugas2_Inherit-polymorph-2546.git)
+   cd Tugas2_Inherit-polymorph-2546
+
+   javac -d out src/soal1/*.java src/soal2/*.java src/soal3/*.java src/soal4/*.java
+
+   Jalankan kelas pengujian sesuai modul yang ingin diuji:
+        Soal 1: java -cp out soal1.TesSoal1
+        Soal 2: java -cp out soal2.TesSoal2
+        Soal 3: java -cp out soal3.TesSoal3
+        Soal 4: java -cp out soal4.TesSoal4
+
+2. Melalui IntelliJ IDEA
+        1. Buka aplikasi IntelliJ IDEA.
+        2. Pilih Open lalu arahkan ke folder proyek           Tugas2_Inherit-polymorph-2546.
+        3. Pastikan Project SDK sudah diatur ke Java 21 (File > Project Structure > Project).
+        4. Buka file pengujian yang ingin dijalankan di dalam folder src/ (misalnya src/soal4/TesSoal4.java).
+        5. Klik ikon Run (segitiga hijau) di sebelah method main atau tekan tombol Shift + F10.
 
 ### Pertanyaan Tambahan Soal 1 (Eksperimen Private Access)
 
@@ -93,3 +116,6 @@ src/soal1/Laptop.java:39: error: harga has private access in Perangkat
 
 ### Jawaban Soal 3
 - **Penjelasan**: Sebelum penerapan defensive copy, perubahan `t.setX(100)` menyebabkan titik awal `g2` ikut berubah akibat aliasing di mana variabel luar dan internal `Garis` berbagi referensi alamat memori yang sama. Setelah diterapkan defensive copy pada konstruktor dan getter dengan menginstansiasi objek `Titik` baru, koordinat `g2` tetap terjaga secara independen di `(1.0, 1.0)-(5.0, 5.0)` sehingga enkapsulasi data terlindungi dari efek samping eksternal. Teknik aliasing lebih tepat dipakai saat membutuhkan shared state yang terintegrasi secara global, sedangkan defensive copy digunakan ketika memprioritaskan imutabilitas dan keamanan status internal objek. Selain itu, desain `Garis extends Titik` kurang tepat secara hirarki OOP karena hubungan keduanya bersifat Has-A (Garis memiliki dua Titik) dan bukan Is-A (Garis bukan merupakan sebuah Titik).
+
+### Jawaban Soal 4
+- **Penjelasan**:Polimorfisme diterapkan pada method `hitungHargaAkhir()` dan `deskripsi()` di mana setiap subclass (`ProdukFisik`, `ProdukDigital`, `Langganan`) memberikan implementasi spesifik sesuai karakteristik produknya, sehingga pemanggilan method pada koleksi `List<Produk>` di kelas `Keranjang` secara otomatis dieksekusi berdasarkan tipe dinamis objek (dynamic binding). Pencegahan produk duplikat dicapai melalui override method `equals()` pada kelas `Produk` yang membandingkan kesamaan nilai atribut `sku`. Selain itu, kelas `Keranjang` memanfaatkan safe downcasting dengan operator `instanceof` untuk mengelompokkan jumlah item berdasarkan tipe spesifiknya, di mana pengecekan `Langganan` dilakukan terlebih dahulu sebelum `ProdukDigital` untuk menghindari kesalahan klasifikasi akibat hirarki pewarisan.
